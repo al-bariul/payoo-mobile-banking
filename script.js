@@ -18,8 +18,8 @@ loginBtn.addEventListener("click", function (event) {
     mobileNumber === convertGetMobileNumberValue &&
     pinNumber === converPaswordNumber
   ) {
-    console.log("success", convertGetMobileNumberValue, converPaswordNumber);
+    window.location.href = "./home.html";
   } else {
-    console.log("wrong", convertGetMobileNumberValue, converPaswordNumber);
+    alert("Invalid mobile number or pin");
   }
 });
