@@ -31,7 +31,7 @@
         <div class="flex">
           <img class="h-[50px]" src="./assets/Group.png" alt="" />
           <div class="ml-3">
-            <h2 class="font-bold">$<span>45000</span></h2>
+            <h2 class="font-bold">$<span id="money">45000</span></h2>
             <p class="text-[#08080877]">Available Balance</p>
           </div>
         </div>
@@ -66,19 +66,19 @@
         </div>
         <div class="border-2 border-gray-300 text-center rounded-lg p-3">
           <img src="./assets/money1.png" alt="" class="mx-auto" />
-          <h2>Add Money</h2>
+          <h2>Transfer Money</h2>
         </div>
         <div class="border-2 border-gray-300 text-center rounded-lg p-3">
           <img src="./assets/bonus1.png" alt="" class="mx-auto" />
-          <h2>Add Money</h2>
+          <h2>Get Bonus</h2>
         </div>
         <div class="border-2 border-gray-300 text-center rounded-lg p-3">
           <img src="./assets/purse1.png" alt="" class="mx-auto" />
-          <h2>Add Money</h2>
+          <h2>Pay Bill</h2>
         </div>
         <div class="border-2 border-gray-300 text-center rounded-lg p-3">
           <img src="./assets/transaction1.png" alt="" class="mx-auto" />
-          <h2>Add Money</h2>
+          <h2>Transactions</h2>
         </div>
       </div>
     </section>
@@ -88,14 +88,17 @@
       <form class="bg-white p-5 rounded-2xl">
         <div>
           <fieldset class="fieldset">
-            <legend class="fieldset-legend text-sm font-bold">Select A Bank</legend>
+            <legend class="fieldset-legend text-sm font-bold">
+              Select A Bank
+            </legend>
             <select
+              id="selectBank"
               class="select outline-none border-none bg-[#f4f5f7] rounded-2xl w-full"
             >
               <option disabled selected>Select Bank</option>
-              <option>Chrome</option>
-              <option>FireFox</option>
-              <option>Safari</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
             </select>
           </fieldset>
         </div>
@@ -103,9 +106,9 @@
           <label class="font-semibold" for="">Bank Account Number</label>
           <br />
           <input
-            id="password"
-            type="password"
-            placeholder="Enter 11 digit account number"
+            id="accountNumber"
+            type="number"
+            placeholder="Enter 4 digit account number"
             class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
           />
         </div>
@@ -113,8 +116,8 @@
           <label class="font-semibold" for="">Amount to Add</label>
           <br />
           <input
-            id="password"
-            type="password"
+            id="addAmount"
+            type="number"
             placeholder="Add Amount to withdraw"
             class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
           />
@@ -123,19 +126,22 @@
           <label class="font-semibold" for="">Pin Number</label>
           <br />
           <input
-            id="password"
+            id="pinNumber"
             type="password"
             placeholder="Enter 4 Digit Pin"
             class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
           />
         </div>
         <button
-          id="loginBtn"
+          id="addMoneyBtn"
           class="btn bg-[#0874F2] text-white mt-4 w-full rounded-3xl"
         >
           Add Money
         </button>
       </form>
     </section>
+
+    <!-- js -->
+    <script src="home.js"></script>
   </body>
 </html>
