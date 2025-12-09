@@ -22,8 +22,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+
+    <!-- Custome CSS -->
+    <link rel="stylesheet" href="home.css" />
   </head>
-  <body class="h-auto bg-[#f4f5f7]">
+  <body class="min-h-[100vh] bg-[#f4f5f7]">
     <section class="bg-white max-w-lg mx-auto rounded-b-xl">
       <div
         class="min-h-[50px] flex justify-between items-center max-w-lg mx-auto border-b-1 border-gray-300 p-3"
@@ -53,14 +56,18 @@
         </p>
       </div>
 
-      <div
-        class="h-[200px] max-w-lg mx-auto p-3 grid grid-cols-3 gap-3 mt-5 p-3"
-      >
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+      <div class="h-[200px] max-w-lg mx-auto grid grid-cols-3 gap-3 mt-5 p-3">
+        <div
+          id="addMoneyBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer"
+        >
           <img src="./assets/wallet1.png" alt="" class="mx-auto" />
           <h2>Add Money</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+        <div
+          id="cashOutBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer"
+        >
           <img src="./assets/send1.png" alt="" class="mx-auto" />
           <h2>Cashout</h2>
         </div>
@@ -83,7 +90,7 @@
       </div>
     </section>
 
-    <section class="form-section max-w-lg mx-auto mt-10">
+    <section id="addMoney" class="form-section max-w-lg mx-auto mt-10 hidden">
       <h2 class="font-bold mb-3">Add Money</h2>
       <form class="bg-white p-5 rounded-2xl">
         <div>
@@ -137,6 +144,48 @@
           class="btn bg-[#0874F2] text-white mt-4 w-full rounded-3xl"
         >
           Add Money
+        </button>
+      </form>
+    </section>
+
+    <section id="cashOut" class="form-section max-w-lg mx-auto mt-10 hidden">
+      <h2 class="font-bold mb-3">Cash Out</h2>
+      <form class="bg-white p-5 rounded-2xl">
+        <div class="mt-5">
+          <label class="font-semibold" for="">Agent Number</label>
+          <br />
+          <input
+            id="agentNumber"
+            type="number"
+            placeholder="Enter 4 digit account number"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <div class="mt-5">
+          <label class="font-semibold" for="">Amount</label>
+          <br />
+          <input
+            id="removeAmount"
+            type="number"
+            placeholder="Add Amount to withdraw"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <div class="mt-5">
+          <label class="font-semibold" for="">Pin Number</label>
+          <br />
+          <input
+            id="passwordNumber"
+            type="password"
+            placeholder="Enter 4 Digit Pin"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <button
+          id="withdrawMoney"
+          class="btn bg-[#0874F2] text-white mt-4 w-full rounded-3xl"
+        >
+          Withdraw Money
         </button>
       </form>
     </section>

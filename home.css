@@ -1,0 +1,6 @@
+.active {
+  border: 1px solid #0874f2;
+  color: #0874f2;
+  background-color: rgba(8, 117, 242, 0.127);
+  font-weight: bolder;
+}

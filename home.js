@@ -1,5 +1,10 @@
 const addMoneyBtn = document.getElementById("addMoneyBtn");
 const validPin = 1234;
+const addMoneyBiggerBtn = document.getElementById("addMoneyBiggerBtn");
+const cashOutBiggerBtn = document.getElementById("cashOutBiggerBtn");
+
+/////////////////////////////
+// Add Money Feature
 
 addMoneyBtn.addEventListener("click", function (event) {
   event.preventDefault();
@@ -30,3 +35,20 @@ addMoneyBtn.addEventListener("click", function (event) {
 
   //   console.log(selectBank, accountNumber, addAmount, pinNumber, money);
 });
+
+addMoneyBiggerBtn.addEventListener("click", function () {
+  document.getElementById("addMoney").style.display = "block";
+  document.getElementById("cashOut").style.display = "none";
+
+  // console.log(document.getElementById("addMoneyBiggerBtn"));
+  addMoneyBiggerBtn.classList.add("active");
+  cashOutBiggerBtn.classList.remove("active");
+});
+
+cashOutBiggerBtn.addEventListener("click", function () {
+  document.getElementById("addMoney").style.display = "none";
+  document.getElementById("cashOut").style.display = "block";
+  cashOutBiggerBtn.classList.add("active");
+  addMoneyBiggerBtn.classList.remove("active");
+});
+

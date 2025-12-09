@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practice</title>
+  </head>
+  <body>
+    <button id="btn1">Button 1</button>
+    <button id="btn2">Button 2</button>
+
+    <h1 id="h1">I am heading 1</h1>
+    <h1 id="h2" style="display: none">Heading 2</h1>
+
+    <script>
+      document.getElementById("btn2").addEventListener("click", () => {
+        document.getElementById("h1").style.display = "none";
+        document.getElementById("h2").style.display = "block";
+      });
+
+      document.getElementById("btn1").addEventListener("click", () => {
+        document.getElementById("h1").style.display = "block";
+        document.getElementById("h2").style.display = "none";
+      });
+    </script>
+  </body>
+</html>
