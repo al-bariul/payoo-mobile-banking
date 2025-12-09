@@ -2,6 +2,7 @@ const addMoneyBtn = document.getElementById("addMoneyBtn");
 const validPin = 1234;
 const addMoneyBiggerBtn = document.getElementById("addMoneyBiggerBtn");
 const cashOutBiggerBtn = document.getElementById("cashOutBiggerBtn");
+const withdrawMoney = document.getElementById("withdrawMoney");
 
 /////////////////////////////
 // Add Money Feature
@@ -16,9 +17,6 @@ addMoneyBtn.addEventListener("click", function (event) {
   const addAmount = parseInt(document.getElementById("addAmount").value);
   const pinNumber = parseInt(document.getElementById("pinNumber").value);
 
-  // console.log(String(accountNumber));
-  // console.log(String(accountNumber).length);
-
   if (String(accountNumber).length < 4) {
     alert("Please prive you 4 digit account number.");
     return; // Here writing return mean this function will be finish here. It will not show the below lines code.
@@ -32,10 +30,19 @@ addMoneyBtn.addEventListener("click", function (event) {
   const money = parseInt(document.getElementById("money").innerText);
   const totalNewAvailableBalance = money + addAmount;
   document.getElementById("money").innerText = totalNewAvailableBalance;
-
-  //   console.log(selectBank, accountNumber, addAmount, pinNumber, money);
 });
 
+/////////////////////////////////////
+// Cash Out Feature
+withdrawMoney.addEventListener("click", function (event) {
+  event.preventDefault();
+  const cashOutAmount = parseInt(document.getElementById("removeAmount").value);
+  const money = parseInt(document.getElementById("money").innerText);
+  const totalNewAvailableBalance = money - cashOutAmount;
+  document.getElementById("money").innerText = totalNewAvailableBalance;
+});
+///////////////////////////////////
+// Toggling Feature
 addMoneyBiggerBtn.addEventListener("click", function () {
   document.getElementById("addMoney").style.display = "block";
   document.getElementById("cashOut").style.display = "none";
@@ -52,3 +59,4 @@ cashOutBiggerBtn.addEventListener("click", function () {
   addMoneyBiggerBtn.classList.remove("active");
 });
 
+//
