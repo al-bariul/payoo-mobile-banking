@@ -21,6 +21,16 @@ function getInputValue(id) {
   return inputFieldValue;
 }
 
+////////////////////////////
+// functio to get inner Text
+function getInnerText(id) {
+  const element = document.getElementById(id);
+  const elementValue = element.innerText;
+  const elementValueNumber = parseInt(elementValue);
+
+  return elementValueNumber;
+}
+
 /////////////////////////////
 // Add Money Feature
 addMoneyBtn.addEventListener("click", function (event) {
@@ -29,7 +39,7 @@ addMoneyBtn.addEventListener("click", function (event) {
   const selectBank = document.getElementById("selectBank").value;
   convertStringIntoInteger("accountNumber");
 
-  const addAmount = parseInt(document.getElementById("addAmount").value);
+  const addAmount = convertStringIntoInteger("addAmount");
   const pinNumber = parseInt(document.getElementById("pinNumber").value);
 
   if (String(accountNumber).length < 4) {
@@ -42,7 +52,7 @@ addMoneyBtn.addEventListener("click", function (event) {
     return; // Here writing return mean this function will be finish here. It will not show the below lines code.
   }
 
-  const money = parseInt(document.getElementById("money").innerText);
+  const money = getInnerText("money");
   const totalNewAvailableBalance = money + addAmount;
   document.getElementById("money").innerText = totalNewAvailableBalance;
 });
@@ -52,7 +62,7 @@ addMoneyBtn.addEventListener("click", function (event) {
 withdrawMoney.addEventListener("click", function (event) {
   event.preventDefault();
   const cashOutAmount = parseInt(document.getElementById("removeAmount").value);
-  const money = parseInt(document.getElementById("money").innerText);
+  const money = getInnerText("money");
   const totalNewAvailableBalance = money - cashOutAmount;
   document.getElementById("money").innerText = totalNewAvailableBalance;
 });
