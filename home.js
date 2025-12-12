@@ -66,22 +66,29 @@ withdrawMoney.addEventListener("click", function (event) {
   const totalNewAvailableBalance = money - cashOutAmount;
   document.getElementById("money").innerText = totalNewAvailableBalance;
 });
+
 ///////////////////////////////////
 // Toggling Feature
-addMoneyBiggerBtn.addEventListener("click", function () {
-  document.getElementById("addMoney").style.display = "block";
-  document.getElementById("cashOut").style.display = "none";
+function togglingFeature(id, id2) {
+  document.getElementById(id).style.display = "block";
+  document.getElementById(id2).style.display = "none";
 
-  // console.log(document.getElementById("addMoneyBiggerBtn"));
-  addMoneyBiggerBtn.classList.add("active");
-  cashOutBiggerBtn.classList.remove("active");
+  console.log(id);
+}
+
+function toggleActiveClass(id, id2) {
+  id.classList.add("active");
+  id2.classList.remove("active");
+}
+
+addMoneyBiggerBtn.addEventListener("click", function () {
+  togglingFeature("addMoney", "cashOut");
+  toggleActiveClass(addMoneyBiggerBtn, cashOutBiggerBtn);
 });
 
 cashOutBiggerBtn.addEventListener("click", function () {
-  document.getElementById("addMoney").style.display = "none";
-  document.getElementById("cashOut").style.display = "block";
-  cashOutBiggerBtn.classList.add("active");
-  addMoneyBiggerBtn.classList.remove("active");
+  togglingFeature("cashOut", "addMoney");
+  toggleActiveClass(cashOutBiggerBtn, addMoneyBiggerBtn);
 });
 
 //
