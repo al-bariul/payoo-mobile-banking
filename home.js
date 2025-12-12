@@ -4,16 +4,31 @@ const addMoneyBiggerBtn = document.getElementById("addMoneyBiggerBtn");
 const cashOutBiggerBtn = document.getElementById("cashOutBiggerBtn");
 const withdrawMoney = document.getElementById("withdrawMoney");
 
+////////////////////////////
+// converting string into an integer
+
+function convertStringIntoInteger(id) {
+  const selectId = document.getElementById(id);
+  const takeValueOfSelectid = selectId.value;
+  const convertValueIntoNumber = parseInt(takeValueOfSelectid);
+
+  return convertValueIntoNumber;
+}
+
+function getInputValue(id) {
+  const inputField = document.getElementById(id);
+  const inputFieldValue = inputField.value;
+  return inputFieldValue;
+}
+
 /////////////////////////////
 // Add Money Feature
-
 addMoneyBtn.addEventListener("click", function (event) {
   event.preventDefault();
 
   const selectBank = document.getElementById("selectBank").value;
-  const accountNumber = parseInt(
-    document.getElementById("accountNumber").value
-  );
+  convertStringIntoInteger("accountNumber");
+
   const addAmount = parseInt(document.getElementById("addAmount").value);
   const pinNumber = parseInt(document.getElementById("pinNumber").value);
 
