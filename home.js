@@ -1,8 +1,4 @@
-const addMoneyBtn = document.getElementById("addMoneyBtn");
 const validPin = 1234;
-const addMoneyBiggerBtn = document.getElementById("addMoneyBiggerBtn");
-const cashOutBiggerBtn = document.getElementById("cashOutBiggerBtn");
-const withdrawMoney = document.getElementById("withdrawMoney");
 
 ////////////////////////////
 // converting string into an integer
@@ -33,60 +29,82 @@ function getInnerText(id) {
 
 /////////////////////////////
 // Add Money Feature
-addMoneyBtn.addEventListener("click", function (event) {
-  event.preventDefault();
+document
+  .getElementById("addMoneyBtn")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
 
-  const selectBank = document.getElementById("selectBank").value;
-  convertStringIntoInteger("accountNumber");
+    const selectBank = document.getElementById("selectBank").value;
+    convertStringIntoInteger("accountNumber");
 
-  const addAmount = convertStringIntoInteger("addAmount");
-  const pinNumber = parseInt(document.getElementById("pinNumber").value);
+    const addAmount = convertStringIntoInteger("addAmount");
+    const pinNumber = parseInt(document.getElementById("pinNumber").value);
 
-  if (String(accountNumber).length < 4) {
-    alert("Please prive you 4 digit account number.");
-    return; // Here writing return mean this function will be finish here. It will not show the below lines code.
-  }
+    if (String(accountNumber).length < 4) {
+      alert("Please prive you 4 digit account number.");
+      return; // Here writing return mean this function will be finish here. It will not show the below lines code.
+    }
 
-  if (validPin !== pinNumber) {
-    alert("Please prive valid pin number.");
-    return; // Here writing return mean this function will be finish here. It will not show the below lines code.
-  }
+    if (validPin !== pinNumber) {
+      alert("Please prive valid pin number.");
+      return; // Here writing return mean this function will be finish here. It will not show the below lines code.
+    }
 
-  const money = getInnerText("money");
-  const totalNewAvailableBalance = money + addAmount;
-  document.getElementById("money").innerText = totalNewAvailableBalance;
-});
+    const money = getInnerText("money");
+    const totalNewAvailableBalance = money + addAmount;
+    document.getElementById("money").innerText = totalNewAvailableBalance;
+  });
 
 /////////////////////////////////////
 // Cash Out Feature
-withdrawMoney.addEventListener("click", function (event) {
-  event.preventDefault();
-  const cashOutAmount = parseInt(document.getElementById("removeAmount").value);
-  const money = getInnerText("money");
-  const totalNewAvailableBalance = money - cashOutAmount;
-  document.getElementById("money").innerText = totalNewAvailableBalance;
-});
+document
+  .getElementById("withdrawMoney")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    const cashOutAmount = parseInt(
+      document.getElementById("removeAmount").value
+    );
+    const money = getInnerText("money");
+    const totalNewAvailableBalance = money - cashOutAmount;
+    document.getElementById("money").innerText = totalNewAvailableBalance;
+  });
+
+///////////////////////////////////
+// Transfer Money Feature
+document
+  .getElementById("sendMoney")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    convertStringIntoInteger("userAccountNumber");
+    convertStringIntoInteger("transferAmount");
+    convertStringIntoInteger("pinNumberTransferMoney");
+  });
 
 ///////////////////////////////////
 // Toggling Feature
-function togglingFeature(id, id2) {
-  document.getElementById(id).style.display = "block";
-  document.getElementById(id2).style.display = "none";
+function toggleFeature(id1, id2) {
+  document.getElementById(id2).addEventListener("click", function () {
+    const form = document.getElementsByClassName("form");
+    const commonBtn = document.getElementsByClassName("commonBtn");
+
+    for (const from of form) {
+      from.style.display = "none";
+    }
+
+    for (btn of commonBtn) {
+      console.log(btn);
+      btn.classList.remove("active");
+    }
+    document.getElementById(id1).style.display = "block";
+    document.getElementById(id2).classList.add("active");
+
+    console.log(id1, id2);
+  });
 }
 
-function toggleActiveClass(id, id2) {
-  id.classList.add("active");
-  id2.classList.remove("active");
-}
-
-addMoneyBiggerBtn.addEventListener("click", function () {
-  togglingFeature("addMoney", "cashOut");
-  toggleActiveClass(addMoneyBiggerBtn, cashOutBiggerBtn);
-});
-
-cashOutBiggerBtn.addEventListener("click", function () {
-  togglingFeature("cashOut", "addMoney");
-  toggleActiveClass(cashOutBiggerBtn, addMoneyBiggerBtn);
-});
-
-//
+toggleFeature("addMoney", "addMoneyBiggerBtn");
+toggleFeature("cashOut", "cashOutBiggerBtn");
+toggleFeature("transferMoney", "transferMoneyBiggerBtn");
+toggleFeature("getBonus", "getBonusBiggerBtn");
+toggleFeature("payBill", "payBillBiggerBtn");
+toggleFeature("transaction", "transactionBiggerBtn");

@@ -59,31 +59,43 @@
       <div class="h-[200px] max-w-lg mx-auto grid grid-cols-3 gap-3 mt-5 p-3">
         <div
           id="addMoneyBiggerBtn"
-          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
         >
           <img src="./assets/wallet1.png" alt="" class="mx-auto" />
           <h2>Add Money</h2>
         </div>
         <div
           id="cashOutBiggerBtn"
-          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
         >
           <img src="./assets/send1.png" alt="" class="mx-auto" />
           <h2>Cashout</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+        <div
+          id="transferMoneyBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
+        >
           <img src="./assets/money1.png" alt="" class="mx-auto" />
           <h2>Transfer Money</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+        <div
+          id="getBonusBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
+        >
           <img src="./assets/bonus1.png" alt="" class="mx-auto" />
           <h2>Get Bonus</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+        <div
+          id="payBillBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
+        >
           <img src="./assets/purse1.png" alt="" class="mx-auto" />
           <h2>Pay Bill</h2>
         </div>
-        <div class="border-2 border-gray-300 text-center rounded-lg p-3">
+        <div
+          id="transactionBiggerBtn"
+          class="border-2 border-gray-300 text-center rounded-lg p-3 cursor-pointer commonBtn"
+        >
           <img src="./assets/transaction1.png" alt="" class="mx-auto" />
           <h2>Transactions</h2>
         </div>
@@ -91,7 +103,10 @@
     </section>
 
     <!-- Add Money -->
-    <section id="addMoney" class="form-section max-w-lg mx-auto mt-10 hidden">
+    <section
+      id="addMoney"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
+    >
       <h2 class="font-bold mb-3">Add Money</h2>
       <form class="bg-white p-5 rounded-2xl">
         <div>
@@ -150,7 +165,10 @@
     </section>
 
     <!-- Cash Out -->
-    <section id="cashOut" class="form-section max-w-lg mx-auto mt-10 hidden">
+    <section
+      id="cashOut"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
+    >
       <h2 class="font-bold mb-3">Cash Out</h2>
       <form class="bg-white p-5 rounded-2xl">
         <div class="mt-5">
@@ -195,7 +213,7 @@
     <!-- Transfer Money -->
     <section
       id="transferMoney"
-      class="form-section max-w-lg mx-auto mt-10 hidden"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
     >
       <h2 class="font-bold mb-3">Transfer Money</h2>
       <form class="bg-white p-5 rounded-2xl">
@@ -235,6 +253,107 @@
         >
           Send Now
         </button>
+      </form>
+    </section>
+
+    <!-- Get Bonus -->
+    <section
+      id="getBonus"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
+    >
+      <h2 class="font-bold mb-3">Get Bonus</h2>
+      <form class="bg-white p-5 rounded-2xl">
+        <div class="mt-5">
+          <label class="font-semibold" for="">Enter Bonus Coupon</label>
+          <br />
+          <input
+            id="couponNumber"
+            type="number"
+            placeholder="Enter Your Coupon"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <button
+          id="getBonusBtn"
+          class="btn bg-[#0874F2] text-white mt-4 w-full rounded-3xl"
+        >
+          Get Bonus
+        </button>
+      </form>
+    </section>
+
+    <!-- Pay Bill -->
+    <section
+      id="payBill"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
+    >
+      <h2 class="font-bold mb-3">Pay Bill</h2>
+      <form class="bg-white p-5 rounded-2xl">
+        <div>
+          <fieldset class="fieldset">
+            <legend class="fieldset-legend text-sm font-bold">
+              Select To Pay
+            </legend>
+            <select
+              id="selectPay"
+              class="select outline-none border-none bg-[#f4f5f7] rounded-2xl w-full"
+            >
+              <option disabled selected>Select back</option>
+              <option>A</option>
+              <option>B</option>
+              <option>C</option>
+            </select>
+          </fieldset>
+        </div>
+        <div class="mt-5">
+          <label class="font-semibold" for="">Biller Account Number</label>
+          <br />
+          <input
+            id="billerAccountNumber"
+            type="text"
+            placeholder="Enter 4 digit account number"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <div class="mt-5">
+          <label class="font-semibold" for="">Amount to Pay</label>
+          <br />
+          <input
+            id="amountToPay"
+            type="number"
+            placeholder="Add Amount to withdraw"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <div class="mt-5">
+          <label class="font-semibold" for="">Pin Number</label>
+          <br />
+          <input
+            id="pinNumberForPayBill"
+            type="password"
+            placeholder="Enter 4 Digit Pin"
+            class="input bg-[#f4f5f7] mt-3 rounded-2xl outline-none border-none w-full"
+          />
+        </div>
+        <button
+          id="payNowBtn"
+          class="btn bg-[#0874F2] text-white mt-4 w-full rounded-3xl"
+        >
+          Pay Now
+        </button>
+      </form>
+    </section>
+
+    <!-- Transaction -->
+    <section
+      id="transaction"
+      class="form-section max-w-lg mx-auto mt-10 hidden form"
+    >
+      <h2 class="font-bold mb-3">Transaction</h2>
+      <form class="bg-white p-5 rounded-2xl">
+        <div class="mt-5">
+          <label class="font-semibold" for="">Transaction</label>
+        </div>
       </form>
     </section>
     <!-- js -->
