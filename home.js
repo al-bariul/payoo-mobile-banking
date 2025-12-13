@@ -72,8 +72,6 @@ withdrawMoney.addEventListener("click", function (event) {
 function togglingFeature(id, id2) {
   document.getElementById(id).style.display = "block";
   document.getElementById(id2).style.display = "none";
-
-  console.log(id);
 }
 
 function toggleActiveClass(id, id2) {
