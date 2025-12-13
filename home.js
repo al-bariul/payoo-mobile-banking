@@ -3,13 +3,13 @@ const transactionData = [];
 
 ////////////////////////////
 // converting string into an integer
-
 function convertStringIntoInteger(id) {
   const selectId = document.getElementById(id);
   const takeValueOfSelectid = selectId.value;
   const convertValueIntoNumber = parseInt(takeValueOfSelectid);
 
   return convertValueIntoNumber;
+  // console.log(convertValueIntoNumber);
 }
 
 function getInputValue(id) {
@@ -71,8 +71,6 @@ document
       date: new Date().toLocaleDateString(),
     };
     transactionData.push(data);
-
-    console.log(transactionData);
   });
 
 /////////////////////////////////////
@@ -81,9 +79,7 @@ document
   .getElementById("withdrawMoney")
   .addEventListener("click", function (event) {
     event.preventDefault();
-    const cashOutAmount = parseInt(
-      document.getElementById("removeAmount").value
-    );
+    const cashOutAmount = convertStringIntoInteger("removeAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - cashOutAmount;
     document.getElementById("money").innerText = totalNewAvailableBalance;
@@ -93,7 +89,9 @@ document
       date: new Date().toLocaleDateString(),
     };
     transactionData.push(data);
-    console.log(transactionData);
+    makeInputEmpty("agentNumber");
+    makeInputEmpty("removeAmount");
+    makeInputEmpty("passwordNumber");
   });
 
 ///////////////////////////////////
@@ -103,36 +101,49 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
     convertStringIntoInteger("userAccountNumber");
-    convertStringIntoInteger("transferAmount");
+    const amount = convertStringIntoInteger("transferAmount");
+    const money = getInnerText("money");
+    const totalNewAvailableBalance = money - amount;
+    document.getElementById("money").innerText = totalNewAvailableBalance;
+
     convertStringIntoInteger("pinNumberTransferMoney");
+    makeInputEmpty("userAccountNumber");
+    makeInputEmpty("transferAmount");
+    makeInputEmpty("pinNumberTransferMoney");
   });
 
 ///////////////////////////////////
-// Toggling Feature
-function toggleFeature(id1, id2) {
-  document.getElementById(id2).addEventListener("click", function () {
-    const form = document.getElementsByClassName("form");
-    const commonBtn = document.getElementsByClassName("commonBtn");
-
-    for (const from of form) {
-      from.style.display = "none";
-    }
-
-    for (btn of commonBtn) {
-      btn.classList.remove("active");
-    }
-    document.getElementById(id1).style.display = "block";
-    document.getElementById(id2).classList.add("active");
+// Get Bonus Feature
+document
+  .getElementById("getBonusBtn")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    convertStringIntoInteger("couponNumber");
+    makeInputEmpty("couponNumber");
   });
-}
 
-toggleFeature("addMoney", "addMoneyBiggerBtn");
-toggleFeature("cashOut", "cashOutBiggerBtn");
-toggleFeature("transferMoney", "transferMoneyBiggerBtn");
-toggleFeature("getBonus", "getBonusBiggerBtn");
-toggleFeature("payBill", "payBillBiggerBtn");
-toggleFeature("transaction", "transactionBiggerBtn");
+///////////////////////////////////
+// Pay Bill Feature
+document
+  .getElementById("payNowBtn")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
 
+    convertStringIntoInteger("billerAccountNumber");
+    const amount = convertStringIntoInteger("amountToPay");
+    const money = getInnerText("money");
+    const totalNewAvailableBalance = money - amount;
+    document.getElementById("money").innerText = totalNewAvailableBalance;
+    convertStringIntoInteger("pinNumberForPayBill");
+
+    makeInputEmpty("selectPay");
+    makeInputEmpty("billerAccountNumber");
+    makeInputEmpty("amountToPay");
+    makeInputEmpty("pinNumberForPayBill");
+  });
+
+///////////////////////////////////
+// Transaction Feature
 document
   .getElementById("transactionBiggerBtn")
   .addEventListener("click", function () {
@@ -166,3 +177,29 @@ document
 document.getElementById("logOutBtn").addEventListener("click", function () {
   window.location.href = "./index.html";
 });
+
+///////////////////////////////////
+// Toggling Feature
+function toggleFeature(id1, id2) {
+  document.getElementById(id2).addEventListener("click", function () {
+    const form = document.getElementsByClassName("form");
+    const commonBtn = document.getElementsByClassName("commonBtn");
+
+    for (const from of form) {
+      from.style.display = "none";
+    }
+
+    for (btn of commonBtn) {
+      btn.classList.remove("active");
+    }
+    document.getElementById(id1).style.display = "block";
+    document.getElementById(id2).classList.add("active");
+  });
+}
+
+toggleFeature("addMoney", "addMoneyBiggerBtn");
+toggleFeature("cashOut", "cashOutBiggerBtn");
+toggleFeature("transferMoney", "transferMoneyBiggerBtn");
+toggleFeature("getBonus", "getBonusBiggerBtn");
+toggleFeature("payBill", "payBillBiggerBtn");
+toggleFeature("transaction", "transactionBiggerBtn");
