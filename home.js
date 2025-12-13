@@ -1,4 +1,5 @@
 const validPin = 1234;
+const transactionData = [];
 
 ////////////////////////////
 // converting string into an integer
@@ -64,6 +65,14 @@ document
     const money = getInnerText("money");
     const totalNewAvailableBalance = money + addAmount;
     document.getElementById("money").innerText = totalNewAvailableBalance;
+
+    const data = {
+      name: "Add Money",
+      date: new Date().toLocaleDateString(),
+    };
+    transactionData.push(data);
+
+    console.log(transactionData);
   });
 
 /////////////////////////////////////
@@ -78,6 +87,13 @@ document
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - cashOutAmount;
     document.getElementById("money").innerText = totalNewAvailableBalance;
+
+    const data = {
+      name: "Cash Out",
+      date: new Date().toLocaleDateString(),
+    };
+    transactionData.push(data);
+    console.log(transactionData);
   });
 
 ///////////////////////////////////
@@ -116,3 +132,33 @@ toggleFeature("transferMoney", "transferMoneyBiggerBtn");
 toggleFeature("getBonus", "getBonusBiggerBtn");
 toggleFeature("payBill", "payBillBiggerBtn");
 toggleFeature("transaction", "transactionBiggerBtn");
+
+document
+  .getElementById("transactionBiggerBtn")
+  .addEventListener("click", function () {
+    const transactionContainer = document.getElementById(
+      "transaction-container"
+    );
+    transactionContainer.innerText = "";
+
+    for (const data of transactionData) {
+      const div = document.createElement("div");
+      div.innerHTML = `
+      <div class="bg-white mt-3 rounded-xl p-3 flex justify-between items-center">
+          <div class="flex items-center">
+            <div class="p-3 rounded-full bg-[#f4f5f7]">
+              <img src="./assets/wallet1.png" alt="" />
+            </div>
+            <div class="ml-3">
+              <h1>${data.name}</h1>
+              <p>${data.date}</p>
+            </div>
+          </div>
+          <div>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+      </div>
+      `;
+      transactionContainer.appendChild(div);
+    }
+  });
