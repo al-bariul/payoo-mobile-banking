@@ -27,6 +27,13 @@ function getInnerText(id) {
   return elementValueNumber;
 }
 
+///////////////////////////
+// Making input field empty
+function makeInputEmpty(id) {
+  const commonVariable = document.getElementById(id);
+  commonVariable.value = "";
+}
+
 /////////////////////////////
 // Add Money Feature
 document
@@ -36,9 +43,13 @@ document
 
     const selectBank = document.getElementById("selectBank").value;
     convertStringIntoInteger("accountNumber");
+    makeInputEmpty("accountNumber");
 
     const addAmount = convertStringIntoInteger("addAmount");
     const pinNumber = parseInt(document.getElementById("pinNumber").value);
+
+    makeInputEmpty("addAmount");
+    makeInputEmpty("pinNumber");
 
     if (String(accountNumber).length < 4) {
       alert("Please prive you 4 digit account number.");
@@ -92,13 +103,10 @@ function toggleFeature(id1, id2) {
     }
 
     for (btn of commonBtn) {
-      console.log(btn);
       btn.classList.remove("active");
     }
     document.getElementById(id1).style.display = "block";
     document.getElementById(id2).classList.add("active");
-
-    console.log(id1, id2);
   });
 }
 
