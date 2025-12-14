@@ -63,6 +63,11 @@ document
     }
 
     const money = getInnerText("money");
+    if (addAmount <= 0) {
+      alert("Invalid Amount");
+      return;
+    }
+
     const totalNewAvailableBalance = money + addAmount;
     document.getElementById("money").innerText = totalNewAvailableBalance;
 
@@ -82,6 +87,10 @@ document
     const cashOutAmount = convertStringIntoInteger("removeAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - cashOutAmount;
+    if (cashOutAmount <= 0 || cashOutAmount > totalNewAvailableBalance) {
+      alert("Invalid Amount");
+      return;
+    }
     document.getElementById("money").innerText = totalNewAvailableBalance;
 
     const data = {
@@ -104,12 +113,19 @@ document
     const amount = convertStringIntoInteger("transferAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - amount;
+
     document.getElementById("money").innerText = totalNewAvailableBalance;
 
     convertStringIntoInteger("pinNumberTransferMoney");
     makeInputEmpty("userAccountNumber");
     makeInputEmpty("transferAmount");
     makeInputEmpty("pinNumberTransferMoney");
+
+    const data = {
+      name: "Transfer Money",
+      date: new Date().toLocaleDateString(),
+    };
+    transactionData.push(data);
   });
 
 ///////////////////////////////////
@@ -120,6 +136,12 @@ document
     event.preventDefault();
     convertStringIntoInteger("couponNumber");
     makeInputEmpty("couponNumber");
+
+    const data = {
+      name: "Get Bonus",
+      date: new Date().toLocaleDateString(),
+    };
+    transactionData.push(data);
   });
 
 ///////////////////////////////////
@@ -140,6 +162,12 @@ document
     makeInputEmpty("billerAccountNumber");
     makeInputEmpty("amountToPay");
     makeInputEmpty("pinNumberForPayBill");
+
+    const data = {
+      name: "Pay Bill",
+      date: new Date().toLocaleDateString(),
+    };
+    transactionData.push(data);
   });
 
 ///////////////////////////////////
