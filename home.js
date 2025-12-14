@@ -87,7 +87,7 @@ document
     const cashOutAmount = convertStringIntoInteger("removeAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - cashOutAmount;
-    if (cashOutAmount <= 0 || cashOutAmount > totalNewAvailableBalance) {
+    if (cashOutAmount <= 0 || cashOutAmount > money) {
       alert("Invalid Amount");
       return;
     }
@@ -113,6 +113,10 @@ document
     const amount = convertStringIntoInteger("transferAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - amount;
+    if (amount <= 0 || amount > money) {
+      alert("Invalid Amount");
+      return;
+    }
 
     document.getElementById("money").innerText = totalNewAvailableBalance;
 
@@ -155,6 +159,10 @@ document
     const amount = convertStringIntoInteger("amountToPay");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - amount;
+    if (amount <= 0 || amount > money) {
+      alert("Invalid Amount");
+      return;
+    }
     document.getElementById("money").innerText = totalNewAvailableBalance;
     convertStringIntoInteger("pinNumberForPayBill");
 
