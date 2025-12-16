@@ -1,4 +1,5 @@
 const validPin = 1234;
+const accountNumber = 1234;
 const transactionData = [];
 
 ////////////////////////////
@@ -42,8 +43,10 @@ document
   .addEventListener("click", function (event) {
     event.preventDefault();
 
-    const selectBank = document.getElementById("selectBank").value;
-    convertStringIntoInteger("accountNumber");
+    // const selectBank = document.getElementById("selectBank").value;
+    const accNumber = convertStringIntoInteger("accountNumber");
+    console.log(accNumber);
+    
     makeInputEmpty("accountNumber");
 
     const addAmount = convertStringIntoInteger("addAmount");
@@ -52,7 +55,7 @@ document
     makeInputEmpty("addAmount");
     makeInputEmpty("pinNumber");
 
-    if (String(accountNumber).length < 4) {
+    if (String(accNumber).length < 4 && accNumber === accountNumber) {
       alert("Please prive you 4 digit account number.");
       return; // Here writing return mean this function will be finish here. It will not show the below lines code.
     }
@@ -84,6 +87,15 @@ document
   .getElementById("withdrawMoney")
   .addEventListener("click", function (event) {
     event.preventDefault();
+
+    const agentNumber = document.getElementById("agentNumber").value;
+    console.log(agentNumber);
+    console.log(String(agentNumber).length);
+
+    if (String(agentNumber).length < 4) {
+      alert("Please prive you 4 digit account number.");
+      return;
+    }
     const cashOutAmount = convertStringIntoInteger("removeAmount");
     const money = getInnerText("money");
     const totalNewAvailableBalance = money - cashOutAmount;
